@@ -15,4 +15,7 @@ class Visitor < ActiveRecord::Base
 		})
 		Rails.logger.info("Subscribed #{self.email} to MailChimp") if result 
 	end
+	def git_rev
+	 	`git rev-parse HEAD`[0..6]
+	end
 end
