@@ -16,6 +16,8 @@ class Visitor < ActiveRecord::Base
 		Rails.logger.info("Subscribed #{self.email} to MailChimp") if result 
 	end
 	def git_rev
-	 	`git rev-parse HEAD`[0..6]
+	 	repo = Repo.new(Rails.root + '.git')
+		last_commit = repo.commits.first
+		return last_commit
 	end
 end
